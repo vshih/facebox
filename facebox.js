@@ -350,6 +350,7 @@
    */
 
   $(document).bind('close.facebox', function(e, opts) {
+    if (!opts) opts = getOpts()
     $(document).unbind('keydown.facebox')
     $('#facebox').fadeOut(opts.fadeSpeed, function() {
       if ($('#facebox_moved').length == 0) $('#facebox .content').removeClass().addClass('content')
