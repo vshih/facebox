@@ -75,6 +75,7 @@
  *    fadeSpeed    : 200
  *    loadingImage : '/facebox/loading.gif'
  *    closeImage   : '/facebox/closelabel.gif'
+ *    afterReveal  : null
  *    afterClose   : null
  *
  */
@@ -105,6 +106,7 @@
       fadeSpeed    : 200,
       loadingImage : '/facebox/loading.gif',
       closeImage   : '/facebox/closelabel.gif',
+      afterReveal  : null,
       afterClose   : null,
 
       // Page scope
@@ -164,7 +166,7 @@
       $(document).trigger('beforeReveal.facebox', [opts])
       if (opts.cssClass) $('#facebox .content').addClass(opts.cssClass)
       if (opts.title)
-          $('#facebox .title').html(opts.title)
+        $('#facebox .title').html(opts.title)
       else
         $('#facebox .title').remove()
       $('#facebox .close_image').attr('src', opts.closeImage)
@@ -173,6 +175,7 @@
       $('#facebox .loading').remove()
       $('#facebox .body').children().fadeIn(opts.fadeSpeed)
       $('#facebox').css('left', $(window).width() / 2 - ($('#facebox table').width() / 2))
+      if (opts.afterReveal) opts.afterReveal.call($)
       $(document).trigger('reveal.facebox', [opts]).trigger('afterReveal.facebox', [opts])
     },
 
