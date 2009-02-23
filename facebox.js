@@ -165,10 +165,7 @@
     reveal: function(data, opts) {
       $(document).trigger('beforeReveal.facebox', [opts])
       if (opts.cssClass) $('#facebox .content').addClass(opts.cssClass)
-      if (opts.title)
-        $('#facebox .title').html(opts.title)
-      else
-        $('#facebox .title').remove()
+      $('#facebox .title').html(opts.title ? opts.title : '')
       $('#facebox .close_image').attr('src', opts.closeImage)
       $('#facebox .close').unbind('click').click(function() { $.facebox.close(opts); return false })
       $('#facebox .content').append(data)
